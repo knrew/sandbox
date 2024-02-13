@@ -1,0 +1,8 @@
+.cache
+build
+.vscode
+
+sequences/*
+!sequences/.gitkeep
+
+trial
