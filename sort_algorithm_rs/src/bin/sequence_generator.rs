@@ -2,6 +2,7 @@ use rand::Rng;
 use std::env;
 use std::error::Error;
 use std::fs;
+// use std::io::stdout;
 use std::io::Write;
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -16,18 +17,32 @@ fn main() -> Result<(), Box<dyn Error>> {
   let mut file = fs::File::create(config.sequence_file)?;
 
   for _ in 0..config.sequence_size {
+    // if i == 0 || i == config.sequence_size - 1 || (i + 1) % 10000 == 0 {
+    //   print!("\rgenerating... {}/{}", i + 1, config.sequence_size);
+    //   stdout().flush().unwrap();
+    // }
+
     let n = rng.gen::<i32>();
-    writeln!(file, "{} ", n)?;
+    writeln!(file, "{}", n)?;
     answer.push(n);
   }
+  println!("");
 
   answer.sort();
 
   let mut file = fs::File::create(config.answer_file)?;
 
+  // let mut i = 0;
   for e in answer.iter() {
+    // if i == 0 || i == config.sequence_size - 1 || (i + 1) % 10000 == 0 {
+    //   print!("\ranswer writing... {}/{}", i + 1, config.sequence_size);
+    //   stdout().flush().unwrap();
+    // }
+    // i += 1;
+
     writeln!(file, "{}", e)?;
   }
+  println!("");
 
   Ok(())
 }

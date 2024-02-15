@@ -12,31 +12,34 @@ fn main() -> Result<(), Box<dyn Error>> {
   let mut sequence = utils::read_file(config.sequence_file)?;
   let answer = utils::read_file(config.answer_file)?;
 
-  // for e in sequence.iter() {
-  //   print!("{} ", e);
-  // }
-  // println!("");
+  for e in sequence.iter() {
+    print!("{} ", e);
+  }
+  println!("");
 
   let timer = time::Instant::now();
 
-  // sequence.sort();
+  sequence.sort();
   // sort_algorithm::quick_sort(&mut sequence);
+  // sort_algorithm::intro_sort(&mut sequence);
   // sort_algorithm::merge_sort(&mut sequence);
   // sort_algorithm::bubble_sort(&mut sequence);
   // sort_algorithm::insertion_sort(&mut sequence);
   // sort_algorithm::selection_sort(&mut sequence);
-  sort_algorithm::heap_sort(&mut sequence);
+  // sort_algorithm::heap_sort(&mut sequence);
 
-  // for e in sequence.iter() {
-  //   print!("{} ", e);
-  // }
-  // println!("");
+  let elapsed = timer.elapsed();
 
-  println!("{:?}", timer.elapsed());
+  for e in sequence.iter() {
+    print!("{} ", e);
+  }
+  println!("");
 
   if sequence != answer {
     eprintln!("failed to sort.");
   }
+
+  println!("{:?}", elapsed);
 
   Ok(())
 }

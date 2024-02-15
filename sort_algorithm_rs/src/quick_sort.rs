@@ -1,6 +1,6 @@
 pub fn quick_sort(vec: &mut Vec<i32>) {
-  // quick_sort_recursive(vec, 0, vec.len() - 1);
-  quick_sort_norecursive(vec);
+  quick_sort_recursive(vec, 0, vec.len() - 1);
+  // quick_sort_norecursive(vec);
 }
 
 #[allow(dead_code)]
@@ -45,7 +45,7 @@ fn quick_sort_norecursive(vec: &mut Vec<i32>) {
   }
 }
 
-fn chose_pivot(vec: &mut Vec<i32>, l: usize, r: usize) -> usize {
+pub fn chose_pivot(vec: &mut Vec<i32>, l: usize, r: usize) -> usize {
   let pivot = vec[r];
 
   let mut i = l;
